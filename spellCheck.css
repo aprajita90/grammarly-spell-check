@@ -1,18 +1,39 @@
 body{
     background-color: white;
+    margin: auto;
+    text-align: center;
 }
-h1{
-    text-align:center;
+
+h1 {
+    margin: 20px;
 }
-div { 
-    text-align: center; 
-} 
-  
-input { 
-    margin-top: 10px; 
-} 
-  
-textarea { 
-    margin-top: 15px; 
-    width: 70%; 
-} 
+
+#filecontent { 
+    width: 75%;
+    padding: 10px;
+    border: 2px solid gray;
+    margin: auto;
+    text-align: center;
+    
+}  
+
+input {  
+    text-align: center;
+    margin: 10px; 
+}
+#custommenu{
+    width: 20%;
+    padding: 10px;
+    border: 2px solid white;
+    margin: auto;
+   
+}
+ul.b{
+    list-style-position: inside;
+}
+
+li {
+    background: #cce5ff;
+    margin: 5px;
+}
+

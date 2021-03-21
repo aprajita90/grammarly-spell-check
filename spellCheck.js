@@ -10,7 +10,6 @@ input.addEventListener('change', function () {
     reader.onload = function () { 
        let text = reader.result
        let formattedText = text.replace('','');
-        console.log(formattedText)
         fetch('https://api.textgears.com/spelling?key=1gVny1rfj02gy7kY&text='+ formattedText)
             .then(response => response.json())
             .then(data =>{ 
@@ -24,13 +23,11 @@ input.addEventListener('change', function () {
                 let invalidWordSpans=document.querySelectorAll(".invalidWord");
             
                 for(let i=0; i< invalidWordSpans.length; i++){
-                console.log(invalidWordSpans[i]);
                 $(invalidWordSpans[i]).contextmenu(function(event){
                     console.log(event.clientX +" "+ event.clientY);
                     event.preventDefault();
                     $("#custommenu > ul").empty();
                     for(let j=0; j<invalidWords[i].better.length;j++){
-                        console.log(invalidWords[i]);
                     $("#custommenu > ul").append(`<li wordToReplace="${invalidWords[i].bad}" class="suggestionList">${invalidWords[i].better[j]}</li>`);
                     }
                     $(".suggestionList").mouseover(function (event){
@@ -42,19 +39,17 @@ input.addEventListener('change', function () {
                     $(".suggestionList").click(function(event){
                         let wrongWords = document.getElementsByClassName("invalidWord");
                         for(let k=0; k < wrongWords.length; k++){
-                            console.log(wrongWords[k].innerHTML,"nnnnnnnnnnnnnnn");
-                            console.log($(event.target).attr("wordToReplace"))
                             if(wrongWords[k].innerHTML == $(event.target).attr("wordToReplace")){
                                 wrongWords[k].innerHTML = event.target.innerHTML;
+                                $(wrongWords[k]).css('color', 'black');
                                 wrongWords[k].classList.remove("invalidWord");
-    
                                 $("#custommenu").css("display", "none");
                                 break;
                             }
                         }
                     })
                     $("#custommenu").css("display", "block");
-                    $("#custommenu").css({position:"relative", top:event.clientY, left:event.clientX});
+                    //$("#custommenu").css({position:"relative", top:event.clientY, left:event.clientX});
                  })
                }
             })   

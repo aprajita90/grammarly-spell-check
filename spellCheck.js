@@ -28,15 +28,15 @@ input.addEventListener('change', function () {
                     event.preventDefault();
                     $("#custommenu > ul").empty();
                     for(let j=0; j<invalidWords[i].better.length;j++){
-                    $("#custommenu > ul").append(`<li wordToReplace="${invalidWords[i].bad}" class="suggestionList">${invalidWords[i].better[j]}</li>`);
+                    $("#custommenu > ul").append(`<li wordToReplace="${invalidWords[i].bad}" class="correctWordList">${invalidWords[i].better[j]}</li>`);
                     }
-                    $(".suggestionList").mouseover(function (event){
+                    $(".correctWordList").mouseover(function (event){
                         event.target.style.backgroundColor = "grey";
                     })
-                    $(".suggestionList").mouseout(function(event){
+                    $(".correctWordList").mouseout(function(event){
                         event.target.style.backgroundColor = "";
                     })
-                    $(".suggestionList").click(function(event){
+                    $(".correctWordList").click(function(event){
                         let wrongWords = document.getElementsByClassName("invalidWord");
                         for(let k=0; k < wrongWords.length; k++){
                             if(wrongWords[k].innerHTML == $(event.target).attr("wordToReplace")){
@@ -49,7 +49,7 @@ input.addEventListener('change', function () {
                         }
                     })
                     $("#custommenu").css("display", "block");
-                    //$("#custommenu").css({position:"relative", top:event.clientY, left:event.clientX});
+                    $("#custommenu").css({position:"auto", top:event.clientY, left:event.clientX});
                  })
                }
             })   
